@@ -42,9 +42,39 @@
           <label>Nombre:</label>
           <input type="text" name="nombre" required value="<?php echo $user[0]['nombre'] ?>">
           <label>Posicion:</label>
-          <input type="text" name="posicion" required value="<?php echo $user[0]['posicion'] ?>">
-          <label>Carrera: </label>  
-          <input type="text" name="carrera" required value="<?php echo $user[0]['carrera'] ?>">
+          <select class="form-control" name="posicion" id="posicion" required >
+                  <option value="<?php echo $user[0]['posicion'] ?>"><?php echo $user[0]['posicion'] ?></option>
+                  <?php if ($tipo==1) {?>
+                  <option value="Portero">Portero</option>
+                  <option value="Carrilero ">Carrilero </option>
+                  <option value="Libero">Libero</option>
+                  <option value="Central">Central</option>
+                  <option value="Lateral">Lateral</option>
+                  <option value="Pivote">Pivote</option>
+                  <option value="Interior ">Interior </option>
+                  <option value="Volante">Volante</option>
+                  <option value="Media Punta">Media Punta</option>
+                  <option value="Extremo">Extremo</option>
+                  <option value="Delantero Central ">Delantero Central </option>
+                  <option value="Segundo Delantero">Segundo Delantero</option>
+                  <?php }else{ ?>
+                    <option value="Base">Base</option>
+                  <option value="Escolta ">Escolta </option>
+                  <option value="Altero">Altero</option>
+                  <option value="Ala-Pivot">Ala-Pivot</option>
+                  <option value="Pivote">Pivote</option>
+                              <option value="Segundo Delantero">Segundo Delantero</option>
+                  <?php }?>
+          </select>  
+          <label>Carrera: </label>
+          <select class="form-control" name="carrera" id="carrera" required >
+                  <option value="<?php echo $user[0]['carrera'] ?>"><?php echo $user[0]['carrera'] ?></option>
+                  <option value="ITI">ITI</option>
+                  <option value="PYMES ">PYMES </option>
+                  <option value="MECATRONICA">MECATRONICA</option>
+                  <option value="ISA">ISA</option>
+                  <option value="MANOFACTURA">MANOFACTURA</option>
+          </select>  
           <label>Email:</label>
           <input type="email" name="email" required value="<?php echo $user[0]['email'] ?>">
           <input type="submit" name="submit" value="Actualizar" class="button btn-exit-system">

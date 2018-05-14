@@ -35,9 +35,22 @@
                 <label>Nombre:</label>
                 <input type="text" name="nombre" required>
                 <label>Posicion: </label>  
-                <input type="text" name="posicion" required>
+                 <select class="form-control" name="posicion" id="posicion" required >
+                  <option value="Base">Base</option>
+                  <option value="Escolta ">Escolta </option>
+                  <option value="Altero">Altero</option>
+                  <option value="Ala-Pivot">Ala-Pivot</option>
+                  <option value="Pivote">Pivote</option>
+                  <option value="Segundo Delantero">Segundo Delantero</option>
+          </select>  
                 <label>Carrera: </label>  
-                <input type="text" name="carrera" required>
+                <select class="form-control" name="carrera" id="carrera" required >
+                  <option value="ITI">ITI</option>
+                  <option value="PYMES ">PYMES </option>
+                  <option value="MECATRONICA">MECATRONICA</option>
+                  <option value="ISA">ISA</option>
+                  <option value="MANOFACTURA">MANOFACTURA</option>
+                </select>
                  <label>Email:</label>
                 <input type="email" name="email" required>
                 <input type="submit" name="submit" value="Registrar" class="button">

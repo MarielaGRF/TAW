@@ -12,7 +12,7 @@ if($_GET['id']) {
 ///Entra a una condicional donde manda a llamar a la variable UPDATE y valida si se pudo realizar la actualizacion, en este caso mustra la nueva información en la pagina de update y en caso contario muestra una alerta de falso
 if (update($matricula, $nombre, $carrera,$posicion, $email, $tipo)) {
 	echo "<script> alert('Veradrer') </script>";
-	header("location: update.php?id=".$matricula."&tipo=".$tipo."");
+	header("location: listado.php?tipo=".$tipo."");
 }else {
 	echo "<script> alert('Falso') </script>";
     header("location: update.php?id=".$id."&tipo=".$tipo."");

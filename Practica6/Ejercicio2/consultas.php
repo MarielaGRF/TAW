@@ -103,7 +103,7 @@ function update($matricula,$nombre,$carrera,$posicion,$email,$tipo){
         $sql="UPDATE futbolista SET id='$matricula',nombre='$nombre', posicion='$posicion', carrera='$carrera', email='$email' WHERE id='$matricula'";  
 
     }else{
-        $sql="UPDATE basquetbolistas SET id='$matricula', nombre='$nombre',  posicion='$posicion', carrera='$carrera', email='$email'";
+        $sql="UPDATE basquetbolistas SET id='$matricula', nombre='$nombre',  posicion='$posicion', carrera='$carrera', email='$email' WHERE id='$matricula'";
     }
 //Prepara una sentencia SQL para ser ejecutados por el metodo PDO
     $statement=$pdo->prepare($sql);
