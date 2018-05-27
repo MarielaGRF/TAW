@@ -1,5 +1,4 @@
-
-<h1>PROFESORES</h1>
+<h4>PROFESORES</h4>
 
 	<table border="1">
 		

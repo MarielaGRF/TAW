@@ -12,7 +12,7 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>TUTORIAS</h1>
+<h4>TUTORIAS</h4>
 
 	<table border="1">
 		

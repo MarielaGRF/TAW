@@ -1,4 +1,4 @@
-<h1>REGISTRO DE ALUMNOS</h1>
+<h4>REGISTRO DE ALUMNOS</h4>
 
 
 <form method="post">

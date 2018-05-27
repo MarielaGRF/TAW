@@ -39,7 +39,8 @@ class MvcController{
 		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
 	
 		echo'<input type="text" placeholder="N° de empleado" name="n_empleado" required>
-		<select name="carrera">';
+		
+		<select name="carrera" class="browser-default">';
 		foreach($respuesta as $row => $item) { 
 		echo '
 		
@@ -50,7 +51,7 @@ class MvcController{
 		<input type="email" placeholder="email" name="email" required>
 		<input type="password" placeholder="password" name="password" required>
 
-		<input type="submit" value="Enviar">';
+		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 		
 	}
 
@@ -62,7 +63,7 @@ class MvcController{
 		echo'
 		<input type="text" placeholder="Matricula" name="matricula" required>
 		<input type="text" placeholder="Nombre" name="nombre" required>
-		<select name="carrera" required>';
+		<select name="carrera" required class="browser-default">';
 		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
 		foreach($respuesta as $row => $item){
 			echo '
@@ -70,7 +71,7 @@ class MvcController{
 		}
 		echo '
 		</select> <br></br>
-		<select name="tutor" required>';
+		<select name="tutor" required class="browser-default">';
 
 		foreach($respuesta1 as $row => $item){
 			echo '
@@ -79,9 +80,7 @@ class MvcController{
 		echo '
 		</select>
 
-		<input type="submit" value="Enviar">
-
-				';
+		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 
 	}
 	public function FormTutoriaController($id_tutor){
@@ -93,22 +92,22 @@ class MvcController{
 			$hora= date("h:i:s A");
 			
 			echo '<label>Tipo de asesoria<label><br>
-			<select name="tipo">
+			<select name="tipo" class="browser-default">
 				<option value="1">Individual</option>
 				<option value="2">Grupal</option>
 			</select>
 			<input type="hidden" value="'.$fecha.'" name="fecha">
 			<input type="hidden" value="'.$hora.'" name="hora">
-			<input type="hidden" value="'.$id_tutor.'" name="tutor"><br>
+			<input type="hidden" value="'.$id_tutor.'" name="tutor">
 			<label> Etudiante </label> <br>
-			<select name="nombre" required>';
+			<select name="nombre" required class="browser-default">';
 			foreach($respuesta as $row => $item){
 				echo '<option value='.$item["matricula"].'> '.$item["nombre"].' </option>';
 			}
 			echo '</select>
-			<input type "text" placeholder="Descripcion" name="info" required>
+			<textarea  placeholder="Descripcion" class="materialize-textarea" name="info" required ></textarea>
 
-			<input type="submit" value="Enviar" >';
+			<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 
 	}
 
@@ -124,12 +123,12 @@ class MvcController{
 			<input type="hidden" value="'.$tutoria.'" name="id_tutoria"><br>
 			<input type="hidden" value="'.$id_tutor.'" name="tutor"><br>
 			<label> Etudiante </label> <br>
-			<select name="nombre" required>';
+			<select name="nombre" required class="browser-default">';
 			foreach($respuesta as $row => $item){
 				echo '<option value='.$item["matricula"].'> '.$item["nombre"].' </option>';
 			}
 			echo '</select>
-			<input type="submit" value="Enviar" >';
+			<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 	}
 
 	#REGISTRO DE USUARIOS
@@ -316,7 +315,7 @@ class MvcController{
 			</tr>';
 
 		}
-		echo'<CENTER><H5>ANTES DE ELIMINAR A UN PROFESOR VERIFIQUE QUE NO SEA TUTOR DE ALUMNOS, EN CASO DE SER TUTOR ASIGNE PRIMERO UN NUEVO TUTOR AL ALUMNO.<br> AL ELIMINAR AL PROFESOR SE ELIMINARAN LAS TUTORIAS QUE HAYA REALIZADO. </H5><CENTER>';
+		echo'<CENTER><p>ANTES DE ELIMINAR A UN PROFESOR VERIFIQUE QUE NO SEA TUTOR DE ALUMNOS, EN CASO DE SER TUTOR ASIGNE PRIMERO UN NUEVO TUTOR AL ALUMNO.<br> AL ELIMINAR AL PROFESOR SE ELIMINARAN LAS TUTORIAS QUE HAYA REALIZADO. </p><CENTER>';
 
 	}
 
@@ -335,7 +334,7 @@ class MvcController{
 			</tr>';
 
 		}
-		echo'<CENTER><H5> AL ELIMINAR AL ALUMNO SE ELIMINARAN LAS TUTORIAS QUE HAYA SOLICITADO. </H5><CENTER>';
+		echo'<CENTER><p> AL ELIMINAR AL ALUMNO SE ELIMINARAN LAS TUTORIAS QUE HAYA SOLICITADO. </p><CENTER>';
 
 	}
 	public function vistaCarreraController(){
@@ -345,12 +344,12 @@ class MvcController{
 		
 		echo'<tr>
 				<td>'.$item["nombre"].'</td>
-				<td><a href="index.php?action=editar_Carrera&id='.$item["id"].'"><button>Editar</button></a></td>
+				<td><a href="index.php?action=editar_Carrera&id='.$item["id"].'" ><button waves-effect waves-light btn-small>Editar</button></a></td>
 				<td><a href="index.php?action=VerCarreras&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
 			</tr>';
 
 		}
-		echo'<CENTER><H5> NO SE PODRA ELIMINAR LA CARRERA SI  TIENE ALUMNOS AGREGADOS A ESTA. </H5><CENTER>';
+		echo'<CENTER><p> NO SE PODRA ELIMINAR LA CARRERA SI  TIENE ALUMNOS AGREGADOS A ESTA. </p><CENTER>';
 
 	}
 	public function vistaTutoradosController($id_tutor){
@@ -413,7 +412,7 @@ class MvcController{
 		$respuestas = Datos::vistaUsuariosModel("carraras");
 
 		echo'<input type="hidden" value="'.$respuesta["n_empleado"].'" name="n_empleado">
-		<select name="carrera">';
+		<select name="carrera" class="browser-default">';
 		foreach($respuestas as $row => $item) { 
 		echo '
 			<option value='.$item["id"].'> '.$item["nombre"].' </option>';
@@ -423,7 +422,7 @@ class MvcController{
 		<input type="email" placeholder="email" name="email" required value="'.$respuesta["email"].'">
 		<input type="password" placeholder="password" name="password" required value="'.$respuesta["password"].'">
 
-		<input type="submit" value="Enviar">';
+		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 	}
 
 	public function editarCarreraController(){
@@ -433,7 +432,7 @@ class MvcController{
 
 		echo'<input type="hidden" value="'.$respuesta["id"].'" name="id">
 		<input type="text" placeholder="Nombre" name="nombre" required value="'.$respuesta["nombre"].'">
-		<input type="submit" value="Enviar">';
+		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 	}
 
 	public function editarAlumnoController(){
@@ -445,21 +444,21 @@ class MvcController{
 
 		echo'<input type="hidden" value="'.$respuesta["matricula"].'" name="matricula">
 		<input type="text" placeholder="Nombre" name="nombre" required value="'.$respuesta["nombre"].'">
-		<select name="carrera">';
+		<select name="carrera" class="browser-default">';
 		foreach($respuestas as $row => $item) { 
 		echo '
 			<option value='.$item["id"].'> '.$item["nombre"].' </option>';
 		}
 		echo '
 		</select>
-		<select name="tutor">';
+		<select name="tutor" class="browser-default">';
 		foreach($respuestas1 as $row => $items){
 			echo '
 			<option value='.$items["n_empleado"].'> '.$items["nombre"].' </option>';
 		}
 		echo '
 
-		<input type="submit" value="Enviar">';
+		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 	}
 
 	public function editarTutoriaController($id_tutor){
@@ -471,7 +470,7 @@ class MvcController{
 			echo '
 			<input type="hidden" value="'.$respuestas["id"].'" name="id">
 			<label>Tipo de asesoria<label><br>
-			<select name="tipo">
+			<select name="tipo" class="browser-default">
 				<option value="1">Individual</option>
 				<option value="2">Grupal</option>
 			</select>
@@ -479,14 +478,14 @@ class MvcController{
 			<input type="hidden" value="'.$respuestas["hora"].'" name="hora">
 			<input type="hidden" value="'.$respuestas["tutor"].'" name="tutor"><br>
 			<label> Etudiante </label> <br>
-			<select name="nombre" required>';
+			<select name="nombre" required class="browser-default">';
 			foreach($respuesta as $row => $item){
 				echo '<option value='.$item["matricula"].'> '.$item["nombre"].' </option>';
 			}
 			echo '</select>
 			<input type "text" placeholder="Descripcion" value="'.$respuestas["info"].'" name="info" required>
 
-			<input type="submit" value="Enviar" >';
+			<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 	}
 
 	#ACTUALIZAR USUARIO

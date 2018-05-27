@@ -12,7 +12,7 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>REGISTRO DE TUTORIAS GRUPALES</h1>
+<h4>REGISTRO DE TUTORIAS GRUPALES</h4>
 
 <form method="post">
 	

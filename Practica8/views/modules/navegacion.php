@@ -1,5 +1,6 @@
 <nav>
-	<ul>
+	 <div class="nav-wrapper pink darken-1">
+	<ul class="right hide-on-med-and-down">
 		<li><a href="index.php?action=profesores">Registro Profesores</a></li>
 		<li><a href="index.php?action=carreras">Registro Carreras</a></li>
 		<li><a href="index.php?action=alumnos">Registro Alumnos</a></li>
@@ -12,4 +13,5 @@
 		<li><a href="index.php?action=ingresar">Ingreso</a></li>
 		<li><a href="index.php?action=salir">Salir</a></li>
 	</ul>
+</div>
 </nav>

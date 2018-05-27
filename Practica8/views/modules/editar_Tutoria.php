@@ -12,7 +12,7 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>EDITAR TUTORIAS</h1>
+<h4>EDITAR TUTORIAS</h4>
 
 <form method="post">
 	

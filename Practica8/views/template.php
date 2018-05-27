@@ -3,94 +3,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Template</title>
+	<title>Sistema Escolar</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css">
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
-	<style>
-
-		nav{
-			position:relative;
-			margin:auto;
-			width:100%;
-			height:auto;
-			background:black;
-		}
-
-		nav ul{
-			position:relative;
-			margin:auto;
-			width:50%;
-			text-align: center;
-		}
-
-		nav ul li{
-			display:inline-block;
-			width:24%;
-			line-height: 50px;
-			list-style: none;
-		}
-
-		nav ul li a{
-			color:white;
-			text-decoration: none;
-		}
-
-		section{
-			position: relative;
-			margin: auto;
-			width:400px;
-		}
-
-		section h1{
-			position: relative;
-			margin: auto;
-			padding:10px;
-			text-align: center;
-		}
-
-		section form{
-			position:relative;
-			margin:auto;
-			width:400px;
-		}
-
-		section form input{
-			display:inline-block;
-			padding:10px;
-			width:95%;
-			margin:5px;
-		}
-
-		section form input[type="submit"]{
-			position:relative;
-			margin:20px auto;
-			left:4.5%;
-
-		}
-
-		table{
-			position:relative;
-			margin:auto;
-			width:100%;
-			left:-10%;
-		}
-
-		table thead tr th{
-			padding:10px;
-		}
-
-		table tbody tr td{
-			padding:10px;
-		}
-	</style>
-
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
 
 <body>
 
-<?php include "modules/navegacion.php"; ?>
+<?php  include "modules/navegacion.php"; ?>
 
 
-<section>
+<div class="container">
 
 <?php 
 
@@ -99,8 +29,25 @@ $mvc -> enlacesPaginasController();
 
  ?>
 
-</section>
-	
+</div>
+	<script type="text/javascript">
+	  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+  
+   $(document).ready(function(){
+    $(".dropdown-trigger").dropdown();
+  });     
+</script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/materialize.min.js"></script>
 </body>
 
 </html>

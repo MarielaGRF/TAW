@@ -1,4 +1,4 @@
-<h1>INGRESAR</h1>
+<h4>INICIAR SESION</h4>
 
 	<form method="post">
 		
@@ -6,7 +6,7 @@
 
 		<input type="password" placeholder="Contraseña" name="password" required>
 
-		<input type="submit" value="Enviar">
+		<center><input type="submit" value="Enviar" class="btn waves-effect waves-red grey lighten-5 black-text text-darken-2""></center>
 
 	</form>
 

@@ -13,7 +13,7 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>REGISTRO DE TUTORIAS</h1>
+<h4>REGISTRO DE TUTORIAS</h4>
 <form method="post">
 	
 	

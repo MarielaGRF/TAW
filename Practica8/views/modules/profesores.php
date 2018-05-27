@@ -1,4 +1,4 @@
-<h1>REGISTRO DE PROFESORES</h1>
+<h4>REGISTRO DE PROFESORES</h4>
 
 
 <form method="post">
