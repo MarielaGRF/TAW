@@ -52,10 +52,11 @@ if(isset($_GET["action"])){
 
 	if($_GET["action"] == "cambios"){
 
-		echo "Cambio Exitoso";
+				echo "<script>alert(Cambio Exitoso)</script>";
 	
+	}else{
+		echo "<script>alert(No Se Realizo El Cambio)</script>";
 	}
-
 }
 
 ?>

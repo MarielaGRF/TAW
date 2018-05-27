@@ -33,17 +33,12 @@ if(isset($_GET["action"])){
 
 	if($_GET["action"] == "echo"){
 
-		echo "Registro Exitoso";
+			echo "<script>alert(Registro Exitoso)</script>";
 	
+	}else{
+		echo "<script>alert(No Se Realizo El Registro)</script>";
 	}
-	/*elseif ($_GET["action"] == 1) {
-		$registro-> FormTutoriaController();
-		$registro -> registroTutoriaController();
-	} 
-	elseif ($_GET["action"] == 2) {
-		$registro-> FormTutoriaController();
-		$registro -> FormTutoriasController();
-	}*/
+
 	
 
 }

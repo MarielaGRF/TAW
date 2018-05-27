@@ -63,14 +63,16 @@ class MvcController{
 		echo'
 		<input type="text" placeholder="Matricula" name="matricula" required>
 		<input type="text" placeholder="Nombre" name="nombre" required>
+		<label> Carrera:</label>
 		<select name="carrera" required class="browser-default">';
-		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
+
 		foreach($respuesta as $row => $item){
 			echo '
 			<option value='.$item["id"].'> '.$item["nombre"].' </option>';
 		}
 		echo '
-		</select> <br></br>
+		</select> <br>
+		<label> Seleccion de Tutor:</label>
 		<select name="tutor" required class="browser-default">';
 
 		foreach($respuesta1 as $row => $item){
@@ -83,6 +85,7 @@ class MvcController{
 		<input type="submit" value="Enviar" class="waves-effect waves-purple btn-small grey lighten-5 black-text text-darken-2">';
 
 	}
+
 	public function FormTutoriaController($id_tutor){
 
 		#echo '<script> alert("'.$id_tutor.'") </script>';

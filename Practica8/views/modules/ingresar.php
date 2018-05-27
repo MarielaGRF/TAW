@@ -1,3 +1,14 @@
+<?php
+	session_start();
+
+		if($_SESSION["validar"] ){
+
+			header("location:index.php?action=tutorias");
+
+			exit();
+
+	}
+?>
 <h4>INICIAR SESION</h4>
 
 	<form method="post">

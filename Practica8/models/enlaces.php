@@ -37,7 +37,7 @@ class Paginas{
 
 		else if($enlaces == "fallo"){
 
-			$module =  "views/modules/ingresar.php";
+			$module =  "views/modules/profesores.php";
 		
 		}
 

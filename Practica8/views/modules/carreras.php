@@ -37,8 +37,10 @@ if(isset($_GET["action"])){
 
 	if($_GET["action"] == "oki"){
 
-		echo "Registro Exitoso";
+			echo "<script>alert(Registro Exitoso)</script>";
 	
+	}else{
+		echo "<script>alert(No Se Registrar)</script>";
 	}
 
 }
