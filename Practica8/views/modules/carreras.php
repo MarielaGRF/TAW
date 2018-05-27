@@ -1,25 +1,29 @@
-<?php
-
-session_start();
-
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
-
 <h1>REGISTRO DE CARRERAS</h1>
 
 <form method="post">
 	
+	<?php
+		session_start();
 
-	<input type="text" placeholder="nombre" name="nombre" required>
+		if(!$_SESSION["validar"] ){
 
-	<input type="submit" value="Enviar">
+			header("location:index.php?action=ingresar");
+
+			exit();
+
+		}elseif ($_SESSION["validar"] and $_SESSION["tipo_usuario"]==1) {
+			echo '<input type="text" placeholder="nombre" name="nombre" required>
+
+	<input type="submit" value="Enviar">';
+		}else{
+
+			echo "<script> alert('Necesita ser un administrador para ingresar a esta seccion')</script>";
+			#header("location:index.php?action=tutorias");
+		}
+		?>
+
+
+	
 
 </form>
 

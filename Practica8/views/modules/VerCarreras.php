@@ -6,10 +6,7 @@
 		<thead>
 			
 			<tr>
-				<th>N° de empleado</th>
 				<th>Nombre</th>
-				<th>carrera</th>
-				<th>Email</th>
 				<th>Editar</th>
 				<th>Eliminar</th>
 
@@ -30,8 +27,8 @@
 		}elseif ($_SESSION["validar"] and $_SESSION["tipo_usuario"]==1) {
 			
 			$vistaUsuario = new MvcController();
-			$vistaUsuario -> vistaProfesoresController();
-			$vistaUsuario -> borrarProfesorController();
+			$vistaUsuario -> vistaCarreraController();
+			$vistaUsuario -> borrarCarreraController();
 		}else{
 
 			echo "<script> alert('Necesita ser un administrador para ingresar a esta seccion')</script>";

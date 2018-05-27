@@ -1,18 +1,4 @@
-<?php
 
-session_start();
-
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
-
-<h1>PROFESORES</h1>
 
 	<table border="1">
 		
@@ -32,13 +18,31 @@ if(!$_SESSION["validar"]){
 
 		<tbody>
 			
-			<?php
 
+					<?php
+		session_start();
+
+		if(!$_SESSION["validar"] ){
+
+			header("location:index.php?action=ingresar");
+
+			exit();
+
+		}elseif ($_SESSION["validar"] and $_SESSION["tipo_usuario"]==1) {
+			echo "<h1>ALUMNOS</h1>";
 			$vistaUsuario = new MvcController();
 			$vistaUsuario -> vistaAlumnosController();
 			$vistaUsuario -> borrarAlumnoController();
 
-			?>
+		}elseif ($_SESSION["validar"] and $_SESSION["tipo_usuario"]==0) {
+			echo "<h1>TUTORADOS</h1>";
+			$id=$_SESSION["id"];
+			$vistaUsuario = new MvcController();
+			$vistaUsuario -> vistaTutoradosController($id);
+			$vistaUsuario -> borrarAlumnoController();
+
+		}
+		?>
 
 		</tbody>
 
