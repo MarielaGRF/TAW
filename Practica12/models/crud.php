@@ -28,8 +28,8 @@ class Datos extends Conexion {
 	public function registroUsuarioModel($datosModel, $tabla){
 		//prepara la conexion a la base de datos y prepara ls entencia SQL 
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id, nombre, apellido, user_password, user_email, date_added)
-		 VALUES (:id,:nombre,:apellido, :password, :email, :fecha)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id, nombre, apellido, user_password, user_email, date_added, id_tienda,tipo_admin)
+		 VALUES (:id,:nombre,:apellido, :password, :email, :fecha,:id_tienda,:tipo_admin)");	
 		//Inserta los valores del array en las varaibles que se utlizan para hacer la inserccion y se ejecuta la
 		$stmt->bindParam(":apellido", $datosModel["apellido"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
@@ -37,6 +37,8 @@ class Datos extends Conexion {
 		$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_tienda", $datosModel["id_tienda"], PDO::PARAM_INT);
+		$stmt->bindParam(":tipo_admin", $datosModel["tipo_admin"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
 
@@ -77,10 +79,34 @@ class Datos extends Conexion {
 		$stmt->close();
 
 	}
+		#Esta funcion registra las nuevas tiendas , Esta actividad solo es realizada por el super Admin
+	public function registroTiendasModel($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id, nombre, ubicacion, date_added)
+		 VALUES (:id,:nombre,:direccion, :fecha)");	
+		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datosModel["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
 	#Esta funcion registra nuevos productos 
 	public function registroProductosModel($datosModel, $tabla){
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id,codigo, nombre, date_added, precio, stock, id_categoria)
-		 VALUES (:id,:codigo, :nombre, :fecha,:precio,:stock,:id_categoria)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (id,codigo, nombre, date_added, precio, stock, id_categoria,id_tienda)
+		 VALUES (:id,:codigo, :nombre, :fecha,:precio,:stock,:id_categoria,:id_tienda)");	
 		
 		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":codigo", $datosModel["codigo"], PDO::PARAM_INT);
@@ -88,6 +114,7 @@ class Datos extends Conexion {
 		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio", $datosModel["precio"], PDO::PARAM_INT);
 		$stmt->bindParam(":stock", $datosModel["stock"], PDO::PARAM_INT);
+		$stmt->bindParam(":id_tienda", $datosModel["id_tienda"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_categoria", $datosModel["id_categoria"], PDO::PARAM_INT);
 		
 
@@ -190,6 +217,58 @@ class Datos extends Conexion {
 		$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
 		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
+	public function actualizarTiendaModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre=:nombre	, ubicacion= :direccion, date_added=:fecha
+			WHERE id = :id");
+		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datosModel["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
+		#Esta actualiza registra el producto ya seleccionado 
+	public function actualizarProductoModel($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET codigo=:codigo, nombre=:nombre, date_added=:fecha, precio=:precio, stock=:stock, id_categoria=:id_categoria WHERE id=:id");	
+		
+		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":codigo", $datosModel["codigo"], PDO::PARAM_INT);
+		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":fecha", $datosModel["fecha"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio", $datosModel["precio"], PDO::PARAM_INT);
+		$stmt->bindParam(":stock", $datosModel["stock"], PDO::PARAM_INT);
+		$stmt->bindParam(":id_categoria", $datosModel["id_categoria"], PDO::PARAM_INT);
+		
 
 		if($stmt->execute()){
 

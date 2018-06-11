@@ -10,10 +10,17 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              
-              
-      <form  method="post">
+                <form  method="post">
         <div class="card-body">
+                 <?php
+              if ($_SESSION["tipo_admin"]==1) {
+                $form = new Controller();
+                $form -> FormUsuariosController();
+              }else{
+            ?> 
+
+              
+      
           <div class="form-group">
             <div class="form-group has-feedback">
               <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
@@ -31,6 +38,7 @@
               <input type="password" class="form-control" placeholder="Password" name="password" required>
               <span class="fa fa-lock form-control-feedback"></span>
             </div>
+
             <div class="row">
               <div class="col-4">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
@@ -38,7 +46,11 @@
               <!-- /.col -->
             </div>
           </div>
-        </div>
+        
+      <?php
+        }
+      ?>
+      </div>
       </form>
     </div>
   </div>
@@ -48,6 +60,7 @@
 </div>
 </section>
 <?php
+
 $registro = new Controller();
 $registro -> registroUsuarioController();
 

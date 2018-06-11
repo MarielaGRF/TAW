@@ -63,7 +63,7 @@
                   <?php
                   $editar = new Controller();
                   $editar -> editarProductoController();
-                  $editar -> registroProductoController();
+                  $editar -> actualizarProductoController();
                   ?>
                   </div>
               </form>

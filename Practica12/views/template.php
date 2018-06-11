@@ -1,5 +1,5 @@
 <?php 
-//session_start();
+session_start();
   error_reporting(0);
  ?>
 <!DOCTYPE html>
@@ -37,7 +37,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini >
+<?php
+    //verificamos si se encuentra logeado
+    if(isset($_SESSION["nombre"]))
+    {
+    ?>
+<body class="hold-transition sidebar-mini" >
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -83,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <a href="index3.html" class="brand-link">
       <img src="Views/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">ALmacen</span>
+      <span class="brand-text font-weight-light">Almacen</span>
     </a>
 
     <!-- Sidebar -->
@@ -94,10 +99,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="Views/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"></a>
+          <a href="#" class="d-block"><?php echo $_SESSION["nombre"]; ?></a>
         </div>
       </div>
-      <?php  include "pages/Navegacion.php"; ?>
+       <?php
+    }
+            
+            //verificamos si esta logeado para mostrar el menu lateral del sistema
+            if($_SESSION["tipo_admin"] ==2)
+            {
+              include "pages/Navegacion.php";
+
+            }elseif($_SESSION["tipo_admin"]==1){
+              
+              include "pages/Navegacio_super.php";
+            }
+              ?>
 
 
 
@@ -110,25 +127,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
 
     <?php 
-
-$mvc = new Controller();
+if(isset($_SESSION["nombre"]))
+            {
+              $mvc = new Controller();
 $mvc -> enlacesPaginas();
+}
+            
+
 
  ?>
     
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
 
+  <!-- /.control-sidebar -->
+ <?php 
+if(isset($_SESSION["nombre"]))
+            {
+           ?>
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
@@ -136,13 +153,18 @@ $mvc -> enlacesPaginas();
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 .</strong>
   </footer>
-  <?php 
-/*else: 
-   include "Views/pages/login.php"; 
- endif;*/?>
+<?php
+}
+ ?>
 </div>
+<?php
+if (!isset($_SESSION["nombre"])) {
+  
+       include "pages/login.php";
+    }
+?>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -176,8 +198,35 @@ $mvc -> enlacesPaginas();
 <script src="Views/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="Views/dist/js/demo.js"></script>
-<!-- iCheck -->
-<script src="Views/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="Views/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="Views/plugins/datatables/jquery.dataTables.js"></script>
+<script src="Views/plugins/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- FastClick -->
+<script src="Views/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="Views/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="Views/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+      
+    });
+  });
+</script>
+</body>
 <!-- Page script -->
 <script>
   $(function () {
@@ -256,8 +305,4 @@ $mvc -> enlacesPaginas();
 </script>
 </body>
 </html>
-
-
-</div>
-<!-- /.register-box -->
 
